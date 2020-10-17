@@ -18,7 +18,7 @@ potion = Item("Potion", "potion", "Heals 50 HP", 50)
 elixir = Item("Elixir", "elixir", "Restores Party's HP/MP", 9999)
 grenade = Item("Grenade", "attack", "deals 500 damage", 500)
 
-player_items = [potion, elixir, grenade]
+player_items = [{"item": potion, "quantity": 5}, {"item": elixir, "quantity": 5}, {"item": grenade, "quantity": 5}]
 player = Person(600, 60, 56, 45, [fire, thunder, blizzard, meteor, cure, cura], player_items)
 enemy = Person(1000, 65, 45, 25, [], [])
 running = True
@@ -68,11 +68,28 @@ while running:
         item_choice = int(input("choose item")) - 1
         if item_choice == -1:
             continue
-        item=player.items[item_choice]
-        if item.type=="potion":
-            player.take_damage(-item.prop)
-            print(bcolors.OKGREEN + "\n" + item.name + " heals: " + str(item.prop) + bcolors.ENDC)
+        item = player.items[item_choice]
+        if item["item"].type == "potion" and item["quantity"] > 0:
+            player.take_damage(-item["item"].prop)
+            item["quantity"] = item["quantity"] - 1
+            print(bcolors.OKGREEN + "\n" + item["item"].name + " heals: " + str(item["item"].prop) + bcolors.ENDC)
 
+        elif item["item"].type == "elixir" and item["quantity"] > 0:
+            player.take_damage(-item["item"].prop)
+            player.reduce_mp(-item["item"].prop)
+            item["quantity"] = item["quantity"] - 1
+
+            print(bcolors.OKGREEN + "\n" + item["item"].name + " heals: " + str(item["item"].prop) + bcolors.ENDC)
+            print(bcolors.OKBLUE + "\n" + item["item"].name + " Fills potion by: " + str(
+                item["item"].prop) + bcolors.ENDC)
+        elif item["item"].type == "attack" and item["quantity"] > 0:
+            enemy.take_damage(item["item"].prop)
+            item["quantity"] = item["quantity"] - 1
+            print(bcolors.OKGREEN + "You attacked with " + item["item"].name + " for damage: " + str(
+                item["item"].prop) + bcolors.ENDC)
+        elif item["quantity"] <= 0:
+            print(bcolors.FAIL + "You don't have enough from this item" + bcolors.ENDC)
+            continue
 
     if enemy.get_hp() == 0:
         print(bcolors.OKGREEN + "You Win" + bcolors.ENDC)

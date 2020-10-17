@@ -22,7 +22,7 @@ class Person:
         self.atkh = atk + 10
         self.df = df
         self.magic = magic
-        self.actions = ['attack', 'magic','item']
+        self.actions = ['attack', 'magic', 'item']
         self.items = items
 
     def generate_damage(self):
@@ -51,6 +51,8 @@ class Person:
 
     def reduce_mp(self, cost):
         self.mp = self.mp - cost
+        if self.mp > self.maxmp:
+            self.mp = self.maxmp
 
     def get_spell_name(self, i):
         return self.magic[i]['name']
@@ -75,5 +77,5 @@ class Person:
         i = 1
         print("Item")
         for item in self.items:
-            print(str(i) + " : ", item.name,"  ",item.description ,'prop', str(item.prop))
+            print(str(i) + " : ", item["item"].name, "  ", item["item"].description, 'prop', str(item["item"].prop)," x",str(item["quantity"]))
             i = i + 1
