@@ -87,7 +87,7 @@ while running:
             item["quantity"] = item["quantity"] - 1
             print(bcolors.OKGREEN + "You attacked with " + item["item"].name + " for damage: " + str(
                 item["item"].prop) + bcolors.ENDC)
-        elif item["quantity"] <= 0 :
+        elif item["quantity"] <= 0  :
             print(bcolors.FAIL + "You don't have enough from this item" + bcolors.ENDC)
             continue
 
