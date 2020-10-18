@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac397df0-d7cb-48f2-8400-ed744c4203f3" name="Default Changelist" comment="" />
+    <list default="true" id="ac397df0-d7cb-48f2-8400-ed744c4203f3" name="Default Changelist" comment="First Commit from workplace3" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +17,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1is3G2veokNHWKZmmW81hsJblEK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -81,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603009783007</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="First Commit from workplace2">
+      <created>1603009932157</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603009932157</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit from workplace" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Commit from workplace" />
+    <MESSAGE value="First Commit from workplace2" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Commit from workplace2" />
   </component>
 </project>
