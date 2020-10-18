@@ -1,4 +1,7 @@
 import random
+import math
+
+
 
 
 class bcolors:
@@ -11,9 +14,8 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-
 class Person:
-    def __init__(self, hp, mp, atk, df, magic, items):
+    def __init__(self, hp, mp, atk, df, magic, items, NAME):
         self.maxhp = hp
         self.hp = hp
         self.maxmp = mp
@@ -24,6 +26,7 @@ class Person:
         self.magic = magic
         self.actions = ['attack', 'magic', 'item']
         self.items = items
+        self.name = NAME
 
     def generate_damage(self):
         return random.randrange(self.atkl, self.atkh)
@@ -61,9 +64,10 @@ class Person:
         return self.magic[i]["cost"]
 
     def choose_action(self):
+        print(self.name+":")
         i = 1
         for item in self.actions:
-            print(str(i), " : ", item)
+            print("    ",str(i), " : ", item)
             i = i + 1
 
     def choose_magic(self):
@@ -77,5 +81,48 @@ class Person:
         i = 1
         print("Item")
         for item in self.items:
-            print(str(i) + " : ", item["item"].name, "  ", item["item"].description, 'prop', str(item["item"].prop)," x",str(item["quantity"]))
+            print(str(i) + " : ", item["item"].name, "  ", item["item"].description, 'prop', str(item["item"].prop),
+                  " x", str(item["quantity"]))
             i = i + 1
+
+    def get_stats(self):
+        i = 8 - len(self.name)
+        alignment_string = i * " "
+        j=2-math.floor(math.log10(self.hp))
+        hp_align_str=j*" "
+        maxj=2-math.floor(math.log10(self.maxhp))
+        maxhp_align_str=maxj*" "
+        j = 1 - math.floor(math.log10(self.mp))
+        mp_align_str = j * " "
+        maxj = 1 - math.floor(math.log10(self.maxmp))
+        maxmp_align_str = j * " "
+        hp_line=math.floor(30*self.hp/self.maxhp)
+        mp_line=math.floor(10*self.mp/self.maxmp)
+        print(
+            bcolors.BOLD + "NAME         " + bcolors.OKGREEN + "    HP                                  " + bcolors.OKBLUE + "   MP")
+        print(
+            bcolors.OKGREEN + "                  ______________________________" + bcolors.OKBLUE + "         __________" + bcolors.ENDC)
+        print(
+            bcolors.BOLD + self.name + alignment_string + bcolors.OKGREEN + hp_align_str+str(
+                self.hp) + "/"+str(self.maxhp)+maxhp_align_str+"  |"+hp_line*"▓"+(30-hp_line)*" "+"|" + bcolors.OKBLUE + " "+mp_align_str+str(self.mp)+"/"+str(self.maxmp)+maxmp_align_str+" |"+mp_line*"▓"+(10-mp_line)*" "+"|" + bcolors.ENDC)
+
+    def get_enemy_stats(self):
+        i = 8 - len(self.name)
+        alignment_string = i * " "
+        j=2-math.floor(math.log10(self.hp))
+        hp_align_str=j*" "
+        maxj=2-math.floor(math.log10(self.maxhp))
+        maxhp_align_str=maxj*" "
+        j = 1 - math.floor(math.log10(self.mp))
+        mp_align_str = j * " "
+        maxj = 1 - math.floor(math.log10(self.maxmp))
+        maxmp_align_str = j * " "
+        hp_line=math.floor(30*self.hp/self.maxhp)
+        mp_line=math.floor(10*self.mp/self.maxmp)
+        print(
+            bcolors.BOLD + "NAME         " + bcolors.FAIL + "    HP                                  " + bcolors.OKBLUE + "   MP")
+        print(
+            bcolors.FAIL + "                  ______________________________" + bcolors.OKBLUE + "         __________" + bcolors.ENDC)
+        print(
+            bcolors.BOLD + self.name + alignment_string + bcolors.FAIL + hp_align_str+str(
+                self.hp) + "/"+str(self.maxhp)+maxhp_align_str+"  |"+hp_line*"▓"+(30-hp_line)*" "+"|" + bcolors.OKBLUE + " "+mp_align_str+str(self.mp)+"/"+str(self.maxmp)+maxmp_align_str+" |"+mp_line*"▓"+(10-mp_line)*" "+"|" + bcolors.ENDC)
