@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac397df0-d7cb-48f2-8400-ed744c4203f3" name="Default Changelist" comment="" />
+    <list default="true" id="ac397df0-d7cb-48f2-8400-ed744c4203f3" name="Default Changelist" comment="First Commit from workplace3" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +17,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1is3G2veokNHWKZmmW81hsJblEK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
